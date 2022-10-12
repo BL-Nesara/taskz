@@ -2,10 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const assert = require("assert");
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const taskRoute = require("./route/taskRoute");
 
-const port = 5000;
+dotenv.config();
+
+const port = process.env.PORT || Number(5000);
 
 const app = express();
 
