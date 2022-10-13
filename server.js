@@ -5,6 +5,7 @@ const assert = require("assert");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const taskRoute = require("./route/taskRoute");
+const connectDb = require("./db/connect");
 
 dotenv.config();
 
@@ -32,5 +33,6 @@ app.all(`*`, (req, res) => {
 
 //server call
 app.listen(port, () => {
+  connectDb();
   console.log(`server is running @ http://localhost:${port}`);
 });

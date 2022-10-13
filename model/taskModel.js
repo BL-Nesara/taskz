@@ -1,0 +1,21 @@
+const mongoose = require("mongoose");
+
+const TaskSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true, //trim to eliminate the white spaces
+    },
+    content: { type: String, required: true, trim: true },
+    start: { type: String, required: true, trim: true },
+    end: { type: String, required: true, trim: true },
+    user: { type: String, required: true, trim: true },
+  },
+  {
+    collection: "tasks", //collection is table name
+    timestamps: true,
+  }
+);
+
+module.exports = mongoose.model("Task", TaskSchema);
