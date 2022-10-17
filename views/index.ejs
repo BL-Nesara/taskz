@@ -45,11 +45,6 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 text-center">
-          <h3 class="display-3 text-success">Task List</h3>
-        </div>
-      </div>
-      <div class="row">
         <% tasks.forEach((item,index)=>{ %>
         <div class="col-md-4 mt-2">
           <div class="card">
@@ -86,7 +81,7 @@
             </div>
             <div class="card-footer">
               <a
-                href="/update/<%= item._id %>"
+                href="/edit/<%= item._id %>"
                 class="btn btn-sm btn-outline-info"
                 >Edit</a
               >

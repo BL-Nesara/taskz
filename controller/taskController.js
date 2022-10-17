@@ -10,7 +10,10 @@ const taskController = {
     res.render("create");
   },
   edit: async (req, res) => {
-    res.ender("update");
+    const id = req.params.id; // to read ref id from router
+    const data = await Task.findById({ _id: id });
+    // console.log("single data=", data);
+    res.render("update", { task: data });
   },
   create: async (req, res) => {
     // console.log("data =", req.body);
@@ -20,6 +23,20 @@ const taskController = {
     newTask.save();
     console.log("data saved suuccessfully");
     res.redirect("/");
+  },
+
+  updateTask: async (req, res) => {
+    const data = req.body;
+    console.log("updated data =", data);
+    await Task.findByIdAndUpdate({ _id: req.params.id }, data);
+    console.log("task updated");
+    res.redirect("/");
+  },
+  deleteTask: async (req, res) => {
+    const id = req.params.id;
+    await Task.findByIdAndDelete({ _id: id });
+    console.log("deleted successfully");
+    res.redirect(`/`);
   },
 };
 
